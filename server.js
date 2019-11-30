@@ -48,16 +48,17 @@ app.get('/', (req, res) => {
     //handlebars requires an object be sent to the index.handlebars file
     connection.query('SELECT * FROM burgers', (err, rows)=> {
 
+  //  const leftSide = rows.filter(row => row.devored  );
+  //  const rightSide = rows.filter(row => !row.devored  );
+//  res.render('index', { animals: animals});
+  res.render('index', { burgers: rows});
 
-        res.render("index", {burgers: rows});
+
+//        res.render("index", {burgers: rows});
     });
 
 });
  
-app.get("/weekend", function(req, res) {
-    res.render('index', { name: WHITEY});
-  });   
-
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {
