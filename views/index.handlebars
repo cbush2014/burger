@@ -1,0 +1,13 @@
+
+<div><img src="../public/assets/img/burger.png" alt="burger"></div>
+<div><h1>Eat-Da-Burger</h1></div>
+
+<!-- Pass in data from server.js -->
+<ul>
+  {{#each burgers}}
+  	<li>
+        <span>{{id}}.  {{burger_name}}</span>
+       <button data-id="{{id}}" class="btnDevour">Devour it!</button>
+  	</li>
+  {{/each}}
+</ul>
