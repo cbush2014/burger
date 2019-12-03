@@ -16,7 +16,7 @@
   .leftside {
     /* text-align: right; */
     float: left;
-    width: 68%; 
+    width: 65%; 
     padding: 10px; 
     margin-right 20px;
   }
@@ -24,7 +24,7 @@
   .rightside {
     text-align: left;
     float: right;
-    width: 32%; 
+    width: 35%; 
     padding: 10px;
   }
 
@@ -39,6 +39,7 @@ h1 {
     text-align: center;
     font-size: 1.2em;
     font-weight: bold;
+    color: rgb(238, 40, 14);
 }
 
 img {
@@ -56,9 +57,12 @@ img {
 
 .btnDevour {
     float: right;
-    width: 100px;
-    /* background-color: royalblue;
-    color: white; */
+
+  }
+button {
+  width: 75px;
+  background-color: royalblue;
+  color: white;
 }
 
 .crb {

@@ -17,11 +17,6 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 // Set Handlebars as the default templating engine.
-// app.engine('handlebars', exphbs({defaultLayout: 'main'}));
-// app.set('view engine', 'handlebars');
-
-
-// Set Handlebars as the default templating engine.
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
@@ -45,19 +40,65 @@ connection.connect( (err)=> {
 // ROUTES
 
 app.get('/favicon.ico', (req, res) => {
+<<<<<<< HEAD
+  res.end();
+});
+
+=======
     res.end();
   });
   
+>>>>>>> 598fa8d76741426d3960a9518a7a12d2ce324a56
 // Serve index.handlebars to the root route
 app.get('/', (req, res) => {
-    //handlebars requires an object be sent to the index.handlebars file
-    connection.query('SELECT * FROM burgers', (err, rows)=> {
+  //handlebars requires an object be sent to the index.handlebars file
+  connection.query('SELECT * FROM burgers', (err, rows)=> {
 
+<<<<<<< HEAD
+   res.render('index', { burgers: rows});
+  });
+});
+
+// Post route -> back to home
+app.post("/", function(req, res) {
+  // Test it
+  console.log('You sent, ' + [req.body.newburger]);
+
+  // Test it
+  // return res.send('You sent, ' + req.body.task);
+=======
      res.render('index', { burgers: rows});
 
     });
+>>>>>>> 598fa8d76741426d3960a9518a7a12d2ce324a56
 
+  // When using the MySQL package, we'd use ?s in place of any values to be inserted,
+  // which are then swapped out with corresponding elements in the array
+  // This helps us avoid an exploit known as SQL injection which we'd be open to if we used string concatenation
+  // https://en.wikipedia.org/wiki/SQL_injection
+  connection.query("INSERT INTO burgers (burger_name) VALUES (?)", 
+  [req.body.newburger], function(err, result) {
+    if (err) throw err;
+
+    res.redirect("/");
+  });
 });
+
+// Update.  see public/assets/js and see what update code does (update-form) "PUT"
+app.put("/api/burgers/:id", function (req, res) {
+
+  const query =  connection.query('UPDATE burgers SET devoured = true WHERE ? ',
+  [ 
+       { id: req.params.id }
+  ], 
+  (err, result) => {
+    if (err) throw err;
+    res.end();
+  })
+  console.log(query.sql);
+});
+<<<<<<< HEAD
+=======
  
 // Post route -> back to home
 app.post("/", function(req, res) {
@@ -92,11 +133,12 @@ app.put("/api/burgers/:id", function (req, res) {
     })
     console.log(query.sql);
 });
+>>>>>>> 598fa8d76741426d3960a9518a7a12d2ce324a56
 
 
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {
-    // Log (server-side) when our server has started
-    console.log("Server listening on: http://localhost:" + PORT);
-  });
+  // Log (server-side) when our server has started
+  console.log("Server listening on: http://localhost:" + PORT);
+});
