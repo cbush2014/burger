@@ -40,21 +40,14 @@ connection.connect( (err)=> {
 // ROUTES
 
 app.get('/favicon.ico', (req, res) => {
-<<<<<<< HEAD
   res.end();
 });
 
-=======
-    res.end();
-  });
-  
->>>>>>> 598fa8d76741426d3960a9518a7a12d2ce324a56
 // Serve index.handlebars to the root route
 app.get('/', (req, res) => {
   //handlebars requires an object be sent to the index.handlebars file
   connection.query('SELECT * FROM burgers', (err, rows)=> {
 
-<<<<<<< HEAD
    res.render('index', { burgers: rows});
   });
 });
@@ -66,11 +59,6 @@ app.post("/", function(req, res) {
 
   // Test it
   // return res.send('You sent, ' + req.body.task);
-=======
-     res.render('index', { burgers: rows});
-
-    });
->>>>>>> 598fa8d76741426d3960a9518a7a12d2ce324a56
 
   // When using the MySQL package, we'd use ?s in place of any values to be inserted,
   // which are then swapped out with corresponding elements in the array
@@ -97,43 +85,6 @@ app.put("/api/burgers/:id", function (req, res) {
   })
   console.log(query.sql);
 });
-<<<<<<< HEAD
-=======
- 
-// Post route -> back to home
-app.post("/", function(req, res) {
-    // Test it
-    console.log('You sent, ' + [req.body.newburger]);
-  
-    // Test it
-    // return res.send('You sent, ' + req.body.task);
-  
-    // When using the MySQL package, we'd use ?s in place of any values to be inserted,
-    // which are then swapped out with corresponding elements in the array
-    // This helps us avoid an exploit known as SQL injection which we'd be open to if we used string concatenation
-    // https://en.wikipedia.org/wiki/SQL_injection
-    connection.query("INSERT INTO burgers (burger_name) VALUES (?)", 
-    [req.body.newburger], function(err, result) {
-      if (err) throw err;
-  
-      res.redirect("/");
-    });
-  });
-
-  // Update.  see public/assets/js and see what update code does (update-form) "PUT"
-app.put("/api/burgers/:id", function (req, res) {
-
-    const query =  connection.query('UPDATE burgers SET devoured = true WHERE ? ',
-    [ 
-         { id: req.params.id }
-    ], 
-    (err, result) => {
-      if (err) throw err;
-      res.end();
-    })
-    console.log(query.sql);
-});
->>>>>>> 598fa8d76741426d3960a9518a7a12d2ce324a56
 
 
 
